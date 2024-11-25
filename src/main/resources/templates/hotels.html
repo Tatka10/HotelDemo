@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+</head>
+<body>
+
+
+<tr> Каталог отелей</tr>
+<table border="1" style="width:300px">
+    <tr>
+        <th>Наименование</th>
+        <th>Категория отеля</th>
+        <th> Описание отеля</th>
+
+    <tr th:each="line : ${tab_hotels}">
+        <td><a th:href="@{/hotelinfo(name=${line.name})}"> <span th:text="${line.name}"/></a></td>
+        <td><span th:text="${line.category}"/></td>
+        <td>
+            <a th:href="@{'/hotelinfo?id='+ ${line.id}}"> Описание отеля </a>
+        <td>
+            <a th:href="@{'/deletehotel?id=' + ${line.id}}">Удалить отель </a>
+        </td>
+        <form action="/addhotel" method="get">
+            <input name="hotelname" placeholder="Введите название отеля" required>
+            <br>
+            <input name="category" placeholder="Введите категорию" required>
+            <br>
+            <input type="submit" value="Добавить отель">
+        </form>
+        <form action="/getresult" method="post">
+            ваше имя <input name="username" required>
+            <input type="submit" value="Отправить">
+        </form>
+    </tr>
+</table>
+
+</body>
+</html>

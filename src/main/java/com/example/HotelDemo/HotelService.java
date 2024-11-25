@@ -10,16 +10,17 @@ import java.util.Objects;
 public class HotelService {
     List<Hotel> hotels = new ArrayList<>();
 
-    public List<Hotel> getHotels() {
-        return hotels;
-    }
+
 
     public HotelService(List<Hotel> hotels) {
+        System.out.println("загружается сервис");
         hotels.add(new Hotel(1, 5, "GRAND HOTEL EMERALD"));
-        hotels.add(new Hotel(2, 4, "COSMOS PRIBALTIYASKAYA "));
+        hotels.add(new Hotel(2, 4, "COSMOS PRIBALTIYSKAYA "));
         hotels.add(new Hotel(3, 4, "CITITEL SAINTPETERSBURG"));
         hotels.add(new Hotel(4, 5, "GRAND HOTEL EUROPA"));
     }
+    public List<Hotel> getHotels() {
+        return hotels;}
 
     public Hotel getHotelById(int id) {
         for (Hotel hotel : hotels) {
@@ -45,4 +46,7 @@ public class HotelService {
         if (hotel != null)
             hotels.remove(hotel);
     }
+    public List<Hotel> addHotel(String name, String category){
+
+    return hotels;}
 }

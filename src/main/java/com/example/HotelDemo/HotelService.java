@@ -12,7 +12,7 @@ public class HotelService {
 
 
 
-    public HotelService(List<Hotel> hotels) {
+    public HotelService() {
         System.out.println("загружается сервис");
         hotels.add(new Hotel(1, 5, "GRAND HOTEL EMERALD"));
         hotels.add(new Hotel(2, 4, "COSMOS PRIBALTIYSKAYA "));

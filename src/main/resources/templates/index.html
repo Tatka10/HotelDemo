@@ -22,15 +22,16 @@
     <tr>
         <th>Отель </th>
         <th> Категория </th>
-        <th> Id номер </th>
+        <th> Описание </th>
 
-    <tr th:each="line : ${tab_prod}">
-        <td><a th:href="@{/prodInfo(name=${line.name})}"> <span th:text="${line.name}"/></a></td>
+    <tr th:each="line : ${tab_hotels}">
+        <td><<span th:text="${line.name}"/></td>
         <td><span th:text="${line.price}"/></td>
         <td>
-            <a th:href="@{'/prInfo?id='+ ${line.id}}"> Описание продукта </a>
+            <a th:href="@{'/hotelinfo?id='+ ${line.id}}"> Описание отеля </a>
         <td>
-            <a th:href="@{'/deletePr?id=' + ${line.id}}">Удалить продукт </a>
+            <a th:href="@{'/deletehotel?id=' + ${line.id}}">Удалить отель </a>
         </td>
+
     </tr>
 </table>

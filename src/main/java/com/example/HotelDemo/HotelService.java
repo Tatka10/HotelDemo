@@ -39,4 +39,10 @@ public class HotelService {
 
         return null;
     }
+
+    public void removeById(int id) {
+        Hotel hotel = getHotelById(id);
+        if (hotel != null)
+            hotels.remove(hotel);
+    }
 }

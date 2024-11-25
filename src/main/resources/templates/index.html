@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список отелей</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Список отелей</title>
+</head>
+<body>
+
+<tr> Каталог товаров</tr>
+<table border="1" style="width:300px">
+    <tr>
+        <th>Отель </th>
+        <th> Категория </th>
+        <th> Id номер </th>
+
+    <tr th:each="line : ${tab_prod}">
+        <td><a th:href="@{/prodInfo(name=${line.name})}"> <span th:text="${line.name}"/></a></td>
+        <td><span th:text="${line.price}"/></td>
+        <td>
+            <a th:href="@{'/prInfo?id='+ ${line.id}}"> Описание продукта </a>
+        <td>
+            <a th:href="@{'/deletePr?id=' + ${line.id}}">Удалить продукт </a>
+        </td>
+    </tr>
+</table>

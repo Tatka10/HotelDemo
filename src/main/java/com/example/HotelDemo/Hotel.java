@@ -25,6 +25,5 @@ public class Hotel {
     public int getCategory() {
         return category;
     }
-
 }
 

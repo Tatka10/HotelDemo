@@ -14,12 +14,12 @@ public class HotelService {
 
     public HotelService() {
         System.out.println("загружается сервис");
-        hotels.add(new Hotel("5", "GRAND HOTEL EMERALD"));
-        hotels.add(new Hotel("4", "COSMOS PRIBALTIYSKAYA "));
-        hotels.add(new Hotel("4", "CITITEL SAINT-PETERSBURG"));
-        hotels.add(new Hotel("5", "GRAND HOTEL EUROPA"));
-        hotels.add(new Hotel("2", "HOSTEL KROVATKA"));
-        hotels.add(new Hotel("2", "HOSTEL CENTR"));
+        hotels.add(new Hotel("5 stars", "GRAND HOTEL EMERALD"));
+        hotels.add(new Hotel("4 stars", "COSMOS PRIBALTIYSKAYA "));
+        hotels.add(new Hotel("4 stars", "CITITEL SAINT-PETERSBURG"));
+        hotels.add(new Hotel("5 stars", "GRAND HOTEL EUROPA"));
+        hotels.add(new Hotel("2 stars", "HOSTEL KROVATKA"));
+        hotels.add(new Hotel("2 stars", "HOSTEL CENTR"));
     }
 
     public List<Hotel> getHotels() {

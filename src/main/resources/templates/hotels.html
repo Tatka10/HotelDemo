@@ -22,19 +22,17 @@
         <td>
             <a th:href="@{'/deletehotel?id=' + ${line.id}}">Удалить отель </a>
         </td>
-        <form action="/addhotel" method="get">
-            <input name="hotelname" placeholder="Введите название отеля" required>
-            <br>
-            <input name="category" placeholder="Введите категорию" required>
-            <br>
-            <input type="submit" value="Добавить отель">
-        </form>
-        <form action="/getresult" method="post">
-            ваше имя <input name="username" required>
-            <input type="submit" value="Отправить">
-        </form>
     </tr>
 </table>
-
+<br>
+<form action="/addhotel" method="get">
+    <input name="hotelname" placeholder="Введите название отеля" required>
+    <br>
+    <input name="category" placeholder="Введите категорию" required>
+    <br>
+    <input type="submit" value="Добавить отель">
+    <!--    ваше имя <input name="username" required>-->
+    <!--    <input type="submit" value="Отправить">-->
+</form>
 </body>
 </html>

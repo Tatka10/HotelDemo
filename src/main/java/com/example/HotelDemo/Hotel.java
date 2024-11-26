@@ -1,12 +1,15 @@
 package com.example.HotelDemo;
 
+
 public class Hotel {
     String name;
     int category;
     int id;
 
-    public Hotel(int id, int category, String name) {
-        this.id = id;
+    public Hotel( int category, String name) {
+        int counter = 0;
+        counter++;
+        this.id = counter;
         this.category = category;
         this.name = name;
     }

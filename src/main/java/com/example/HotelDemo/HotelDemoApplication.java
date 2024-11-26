@@ -1,3 +1,11 @@
+//ИС каталог отелей - Наталья
+//
+//		* фильтр по категории
+//
+//		* поиск по названию
+//
+//		? история поисков
+
 package com.example.HotelDemo;
 
 import org.springframework.boot.SpringApplication;

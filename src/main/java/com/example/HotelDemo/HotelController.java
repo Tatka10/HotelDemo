@@ -37,11 +37,13 @@ public class HotelController {
         }
         return "hotels";
     }
-//    @GetMapping("addhotel")
-//    public String add(String hotelname, String category, Model model) {
-//        hotelService.add(prodname,price);
-//        model.addAttribute("name", prodname);
-//        model.addAttribute("price",price);
-//        model.addAttribute("tab_lines", op.products);
-//        return "redirect:/";
+
+    @GetMapping("addhotel")
+    public String addHotel(String hotelname, String category, Model model) {
+        hotelService.addHotel(hotelname, category);
+        model.addAttribute("name", hotelname);
+        model.addAttribute("category", category);
+        model.addAttribute("tab_hotels", hotelService.hotels);
+        return "redirect:/";
+    }
 }

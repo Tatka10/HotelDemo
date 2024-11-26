@@ -5,6 +5,7 @@
     <title>Каталог</title>
 </head>
 <body>
+<h2>Категории отелей </h2>
 <p th:each="category: ${categories}">
     <a th:href="@{/category/{category}(category=${category})}" th:text="${category}">Категория отеля </a>
 </p>

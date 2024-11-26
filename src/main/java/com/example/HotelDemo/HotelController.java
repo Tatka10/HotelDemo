@@ -44,11 +44,21 @@ public class HotelController {
 
     @GetMapping("addhotel")
     public String addHotel(String hotelname, String category, Model model) {
+        if (category.contains("stars")) {
         hotelService.addHotel(hotelname, category);
         model.addAttribute("name", hotelname);
         model.addAttribute("category", category);
         model.addAttribute("tab_hotels", hotelService.hotels);
-        return "redirect:/";
+        return "redirect:/";}
+        else {
+            String cat=category+" stars";
+            hotelService.addHotel(hotelname, cat);
+            model.addAttribute("name", hotelname);
+            model.addAttribute("category", cat);
+            model.addAttribute("tab_hotels", hotelService.hotels);
+            return "redirect:/";
+
+        }
     }
 
     @GetMapping("/hotelinfo")

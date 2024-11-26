@@ -61,8 +61,8 @@ public class HotelService {
         return hotels.stream().filter(p -> p.getCategory().equals(category)).toList();
     }
 
-    public List<String> getCategory(String category) {
-        return hotels.stream().map(Hotel::getCategory).distinct().toList();
+    public List<String> getCategories() {
+        return hotels.stream().map(Hotel::getCategory).distinct().sorted().toList();
     }
 
 }

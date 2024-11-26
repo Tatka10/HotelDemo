@@ -18,6 +18,7 @@ public class HotelController {
         System.out.println("загружается контроллер");
         System.out.println(hotelService.getHotels());
         m.addAttribute("tab_hotels", hotelService.getHotels());
+        m.addAttribute("categories", hotelService.getCategories());
         return "hotels";
     }
 
@@ -25,6 +26,7 @@ public class HotelController {
     public String index1(Model m) {
         System.out.println(hotelService.getHotels());
         m.addAttribute("tab_hotels", hotelService.getHotels());
+        m.addAttribute("categories", hotelService.getCategories());
         return "hotels";
     }
 
@@ -62,8 +64,8 @@ public class HotelController {
     public String getTypeProducts(@PathVariable String category,
                                   Model model) {
         System.out.println("category = " + category);
-        model.addAttribute("category", hotelService.getHotelsByCategory(category));
-        model.addAttribute("categories", hotelService.getCategory(category));
-        return "index";  // название HTML-шаблона
+        model.addAttribute("tab_hotels", hotelService.getHotelsByCategory(category));
+        model.addAttribute("categories", hotelService.getCategories());
+        return "hotels";  // название HTML-шаблона
     }
 }

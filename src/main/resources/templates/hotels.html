@@ -5,6 +5,13 @@
     <title>Каталог</title>
 </head>
 <body>
+<p th:each="category: ${category}">
+    <a th:href="@{/category/{category}(category=${category})}" th:text="${category}">Категория отеля </a>
+</p>
+<!--</form>-->
+<!--<p th:each="type: ${types}">-->
+<!--    <a th:href="@{/type/{type}(type=${type})}" th:text="${type}">тип</a>-->
+<!--</p>-->
 
 
 <tr> Каталог отелей</tr>

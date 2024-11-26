@@ -5,7 +5,7 @@
     <title>Каталог</title>
 </head>
 <body>
-<p th:each="category: ${category}">
+<p th:each="category: ${categories}">
     <a th:href="@{/category/{category}(category=${category})}" th:text="${category}">Категория отеля </a>
 </p>
 <!--</form>-->
@@ -13,8 +13,8 @@
 <!--    <a th:href="@{/type/{type}(type=${type})}" th:text="${type}">тип</a>-->
 <!--</p>-->
 
-
-<tr> Каталог отелей</tr>
+<h1>Каталог отелей</h1>
+<!--<tr> Каталог отелей</tr>-->
 <table border="1" style="width:300px">
     <tr>
         <th>Наименование</th>

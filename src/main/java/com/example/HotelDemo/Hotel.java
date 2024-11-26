@@ -4,7 +4,7 @@ package com.example.HotelDemo;
 public class Hotel {
 
     String name;
-    int category;
+    String category;
     int id;
     static int counter = 1;
 
@@ -18,7 +18,7 @@ public class Hotel {
     }
 
 
-    public Hotel(int category, String name) {
+    public Hotel(String category, String name) {
 
         this.category = category;
         this.name = name;
@@ -34,7 +34,7 @@ public class Hotel {
         return id;
     }
 
-    public int getCategory() {
+    public String getCategory() {
         return category;
     }
 }

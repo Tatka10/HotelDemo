@@ -58,12 +58,12 @@ public class HotelController {
         }
         return "hotelinfo";
     }
-    @GetMapping("/type/{type}")
+    @GetMapping("/category/{category}")
     public String getTypeProducts(@PathVariable String category,
                                   Model model) {
         System.out.println("category = " + category);
         model.addAttribute("category", hotelService.getHotelsByCategory(category));
-        model.addAttribute("category", hotelService.getCategory(category));
+        model.addAttribute("categories", hotelService.getCategory(category));
         return "index";  // название HTML-шаблона
     }
 }

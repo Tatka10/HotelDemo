@@ -1,5 +1,6 @@
 package com.example.HotelDemo;
 
+import jdk.jfr.Category;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,12 +14,12 @@ public class HotelService {
 
     public HotelService() {
         System.out.println("загружается сервис");
-        hotels.add(new Hotel(5, "GRAND HOTEL EMERALD"));
-        hotels.add(new Hotel(4, "COSMOS PRIBALTIYSKAYA "));
-        hotels.add(new Hotel(4, "CITITEL SAINT-PETERSBURG"));
-        hotels.add(new Hotel(5, "GRAND HOTEL EUROPA"));
-        hotels.add(new Hotel(2, "HOSTEL KROVATKA"));
-        hotels.add(new Hotel(2, "HOSTEL CENTR"));
+        hotels.add(new Hotel("5", "GRAND HOTEL EMERALD"));
+        hotels.add(new Hotel("4", "COSMOS PRIBALTIYSKAYA "));
+        hotels.add(new Hotel("4", "CITITEL SAINT-PETERSBURG"));
+        hotels.add(new Hotel("5", "GRAND HOTEL EUROPA"));
+        hotels.add(new Hotel("2", "HOSTEL KROVATKA"));
+        hotels.add(new Hotel("2", "HOSTEL CENTR"));
     }
 
     public List<Hotel> getHotels() {
@@ -51,19 +52,17 @@ public class HotelService {
     }
 
     public List<Hotel> addHotel(String name, String category) {
-        hotels.add(new Hotel(Integer.parseInt(category), name));
+        hotels.add(new Hotel(category, name));
 
         return hotels;
     }
 
     public List<Hotel> getHotelsByCategory(String category) {
-        int y = Integer.parseInt(category);
-
-        return hotels.stream().filter(p -> p.getCategory() == y).toList();
+        return hotels.stream().filter(p -> p.getCategory().equals(category)).toList();
     }
 
-    public List<Integer> getCategory (String category) {
-                return hotels.stream().map(Hotel::getCategory).distinct().toList();
+    public List<String> getCategory(String category) {
+        return hotels.stream().map(Hotel::getCategory).distinct().toList();
     }
 
 }

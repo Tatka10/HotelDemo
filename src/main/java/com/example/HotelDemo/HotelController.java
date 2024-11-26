@@ -46,4 +46,14 @@ public class HotelController {
         model.addAttribute("tab_hotels", hotelService.hotels);
         return "redirect:/";
     }
+
+    @GetMapping("/hotelinfo")
+    public String hotelInfo(String name, Model m) {
+
+        Hotel hotel = hotelService.getHotelByName(name);
+        if (hotel != null) {
+            m.addAttribute("hotel", hotel);
+        }
+        return "hotelinfo";
+    }
 }

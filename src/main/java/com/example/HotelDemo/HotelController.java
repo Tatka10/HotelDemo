@@ -62,7 +62,7 @@ public class HotelController {
     }
 
     @GetMapping("/hotelinfo")
-    public String hotelInfo(String name, Model m) {
+    public String hotelInfo( String name, Model m) {
 
         Hotel hotel = hotelService.getHotelByName(name);
         if (hotel != null) {
@@ -77,5 +77,19 @@ public class HotelController {
         model.addAttribute("tab_hotels", hotelService.getHotelsByCategory(category));
         model.addAttribute("categories", hotelService.getCategories());
         return "hotels";  // название HTML-шаблона
+    }
+    @GetMapping("/findhotel")
+    public String findhotel (String name, Model model){
+        System.out.println("получено name = " + name);
+        Hotel h = hotelService.getHotelByName(name);
+        System.out.println(h);
+        if(h!=null){
+        model.addAttribute("nameFindHotel", h.name);
+        model.addAttribute("categoryFindHOtel", h.category);
+
+        return "hotels";}
+        else {model.addAttribute("nameFindHotel","Отеля нет в списке");
+
+        return "hotels";}
     }
 }

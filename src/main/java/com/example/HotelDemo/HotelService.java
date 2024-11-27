@@ -14,12 +14,12 @@ public class HotelService {
 
     public HotelService() {
         System.out.println("загружается сервис");
-        hotels.add(new Hotel("5 stars", "GRAND HOTEL EMERALD"));
-        hotels.add(new Hotel("4 stars", "COSMOS PRIBALTIYSKAYA "));
-        hotels.add(new Hotel("4 stars", "CITITEL SAINT-PETERSBURG"));
-        hotels.add(new Hotel("5 stars", "GRAND HOTEL EUROPA"));
-        hotels.add(new Hotel("2 stars", "HOSTEL KROVATKA"));
-        hotels.add(new Hotel("2 stars", "HOSTEL CENTR"));
+        hotels.add(new Hotel("5 stars", "EMERALD"));
+        hotels.add(new Hotel("4 stars", "PRIBALTIYSKAYA "));
+        hotels.add(new Hotel("4 stars", "SPETERSBURG"));
+        hotels.add(new Hotel("5 stars", "EUROPA"));
+        hotels.add(new Hotel("2 stars", "KROVATKA"));
+        hotels.add(new Hotel("2 stars", "CENTR"));
     }
 
     public List<Hotel> getHotels() {
@@ -37,7 +37,7 @@ public class HotelService {
 
     public Hotel getHotelByName(String name) {
         for (Hotel hotel : hotels) {
-            if (Objects.equals(hotel.getName(), name)) {
+            if (Objects.equals(hotel.getName(), name.toUpperCase())) {
                 return hotel;
             }
         }
@@ -52,7 +52,7 @@ public class HotelService {
     }
 
     public List<Hotel> addHotel(String name, String category) {
-        hotels.add(new Hotel(category, name));
+        hotels.add(new Hotel(category, name.toUpperCase()));
 
         return hotels;
     }
@@ -64,5 +64,6 @@ public class HotelService {
     public List<String> getCategories() {
         return hotels.stream().map(Hotel::getCategory).distinct().sorted().toList();
     }
+
 
 }

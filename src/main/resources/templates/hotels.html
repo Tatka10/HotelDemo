@@ -14,8 +14,8 @@
 <!--    <a th:href="@{/type/{type}(type=${type})}" th:text="${type}">тип</a>-->
 <!--</p>-->
 
-<h1>Каталог отелей</h1>
-<!--<tr> Каталог отелей</tr>-->
+<h2>Каталог отелей</h2>
+
 <table border="1" style="width:300px">
     <tr>
         <th>Наименование</th>
@@ -42,6 +42,14 @@
     <!--    ваше имя <input name="username" required>-->
     <!--    <input type="submit" value="Отправить">-->
 </form>
+<br>
+<form action="/findhotel">
+    Введите название отеля для поиска <input name="name" checked="checked" required>
+    <input type="submit" value="Искать">
 
+<br>
+ <h2 th:if="${nameFindHotel!=null}"><span th:text="${nameFindHotel}"></span>  </h2>
+<p th:if="${categoryFindHOtel!=null}"><span th:text="${categoryFindHOtel}"> </span> </p>
+</form>
 </body>
 </html>

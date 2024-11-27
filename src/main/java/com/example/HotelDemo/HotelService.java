@@ -1,6 +1,5 @@
 package com.example.HotelDemo;
 
-import jdk.jfr.Category;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,11 +9,11 @@ import java.util.Objects;
 @Component
 public class HotelService {
     List<Hotel> hotels = new ArrayList<>();
-
+    List<String> listSearches = new ArrayList<>();
 
     public HotelService() {
         System.out.println("загружается сервис");
-        hotels.add(new Hotel("5 stars", "EMERALD"));
+        hotels.add(new Hotel("5 stars", "EMERALD", "GrEmerald.jpg"));
         hotels.add(new Hotel("4 stars", "PRIBALTIYSKAYA "));
         hotels.add(new Hotel("4 stars", "SPETERSBURG"));
         hotels.add(new Hotel("5 stars", "EUROPA"));
@@ -65,5 +64,10 @@ public class HotelService {
         return hotels.stream().map(Hotel::getCategory).distinct().sorted().toList();
     }
 
+    public List<String> saveSearchHotels(String name) {
+        listSearches.add(name);
+
+        return listSearches;
+    }
 
 }

@@ -7,6 +7,19 @@ public class Hotel {
     String category;
     int id;
     static int counter = 1;
+    String img;
+
+    public String getImg() {
+        return img;
+    }
+
+    public Hotel(String category, String name, String img) {
+        this.img = img;
+        this.category = category;
+        this.name = name;
+        this.id = counter;
+        counter++;
+    }
 
     @Override
     public String toString() {

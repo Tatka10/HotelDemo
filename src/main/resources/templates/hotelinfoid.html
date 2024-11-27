@@ -8,7 +8,7 @@
 
 <h2 th:if="${hotel!=null}"><span th:text="${hotel.name}"></span> имеет категорию </h2>
 <p th:if="${hotel!=null}"><span th:text="${hotel.category}"> </span> </p>
-
+<p th:if="${hotel.img!=null}"><span th:text="${hotel.img}"> </span> </p>
 <!--<p>NAME: <span th:text="${hotel.name}"></span></p>-->
 <!--&lt;!&ndash;    <img th:src="@{/images/cat.jpg}" width="200" height="auto">&ndash;&gt;-->
 <!--<p th:if="${hotel.jpg != null}">  <span th:text="${hotel.jpg}"></span>-->

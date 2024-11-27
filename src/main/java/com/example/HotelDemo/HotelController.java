@@ -43,65 +43,68 @@ public class HotelController {
 
     @GetMapping("addhotel")
     public String addHotel(String hotelname, String category, Model model) {
+        model.addAttribute("name", hotelname);
         if (category.contains("stars")) {
             hotelService.addHotel(hotelname, category);
-            model.addAttribute("name", hotelname);
-            model.addAttribute("category", category);
-            model.addAttribute("tab_hotels", hotelService.hotels);
-            return "redirect:/";
         } else {
             String cat = category + " stars";
             hotelService.addHotel(hotelname, cat);
-            model.addAttribute("name", hotelname);
-            model.addAttribute("category", cat);
-            model.addAttribute("tab_hotels", hotelService.hotels);
-            return "redirect:/";
-
         }
+        model.addAttribute("tab_hotels", hotelService.getHotels());
+        return "redirect:/";
     }
 
-    @GetMapping("/hotelinfo")
-    public String hotelInfo(String name, Model m) {
 
-        Hotel hotel = hotelService.getHotelByName(name);
-        if (hotel != null) {
-            m.addAttribute("hotel", hotel);
-        }
-        return "hotelinfo";
+@GetMapping("/hotelinfo")
+public String hotelInfo(String name, Model m) {
+
+    Hotel hotel = hotelService.getHotelByName(name);
+    if (hotel != null) {
+        m.addAttribute("hotel", hotel);
     }
+    return "hotelinfo";
+}
 
-    @GetMapping("/hotelinfoid")
-    public String hotelInfoId(String id, Model m) {
-        int i = Integer.parseInt(id);
-        Hotel hotel = hotelService.getHotelById(i);
-        if (hotel != null) {
-            m.addAttribute("hotel", hotel);
-        }
-        return "hotelinfoId";
+@GetMapping("/hotelinfoid")
+public String hotelInfoId(String id, Model m) {
+    int i = Integer.parseInt(id);
+    Hotel hotel = hotelService.getHotelById(i);
+    if (hotel != null) {
+        m.addAttribute("hotel", hotel);
     }
+    return "hotelinfoId";
+}
 
-    @GetMapping("/category/{category}")
-    public String getTypeProducts(@PathVariable String category,
-                                  Model model) {
-        System.out.println("category = " + category);
-        model.addAttribute("tab_hotels", hotelService.getHotelsByCategory(category));
-        model.addAttribute("categories", hotelService.getCategories());
-        return "hotels";  // название HTML-шаблона
+@GetMapping("/category/{category}")
+public String getTypeProducts(@PathVariable String category,
+                              Model model) {
+    System.out.println("category = " + category);
+    model.addAttribute("tab_hotels", hotelService.getHotelsByCategory(category));
+    model.addAttribute("categories", hotelService.getCategories());
+    return "hotels";  // название HTML-шаблона
+}
+
+@GetMapping("/findhotel")
+public String findhotel(String name, Model model) {
+    hotelService.saveSearchHotels(name);
+    System.out.println("получено name = " + name);
+    Hotel h = hotelService.getHotelByName(name);
+    System.out.println(h);
+    if (h != null) {
+        model.addAttribute("nameFindHotel", h.name);
+        model.addAttribute("categoryFindHOtel", h.category);
+        return "hotels";
+    } else {
+        model.addAttribute("nameFindHotel", "Отеля нет в списке");
+
+        return "hotels";
     }
+}
 
-    @GetMapping("/findhotel")
-    public String findhotel(String name, Model model) {
-        System.out.println("получено name = " + name);
-        Hotel h = hotelService.getHotelByName(name);
-        System.out.println(h);
-        if (h != null) {
-            model.addAttribute("nameFindHotel", h.name);
-            model.addAttribute("categoryFindHOtel", h.category);
-            return "hotels";
-        } else {
-            model.addAttribute("nameFindHotel", "Отеля нет в списке");
+@GetMapping("/adminka")
+public String adminka(Model model) {
 
-            return "hotels";
-        }
-    }
+    model.addAttribute("tab_lines", hotelService.listSearches);
+    return "adminka";
+}
 }

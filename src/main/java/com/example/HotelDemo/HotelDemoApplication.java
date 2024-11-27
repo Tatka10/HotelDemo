@@ -4,6 +4,7 @@
 //
 //		* поиск по названию
 //
+
 //		? история поисков
 
 package com.example.HotelDemo;

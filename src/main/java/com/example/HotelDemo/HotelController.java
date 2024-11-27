@@ -44,6 +44,7 @@ public class HotelController {
     @GetMapping("addhotel")
     public String addHotel(String hotelname, String category, Model model) {
         model.addAttribute("name", hotelname);
+
         if (category.contains("stars")) {
             hotelService.addHotel(hotelname, category);
         } else {

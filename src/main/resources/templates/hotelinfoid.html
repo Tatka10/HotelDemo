@@ -6,15 +6,19 @@
 </head>
 <body>
 
-<h2 th:if="${hotel!=null}"><span th:text="${hotel.name}"></span> имеет категорию </h2>
-<p th:if="${hotel!=null}"><span th:text="${hotel.category}"> </span> </p>
-<p th:if="${hotel.img!=null}"><span th:text="${hotel.img}"> </span> </p>
+<h2 contenteditable="true" th:if="${hotel!=null}"><span th:text="${hotel.name}"></span> имеет категорию </h2>
+<h3 contenteditable="true" th:if="${hotel!=null}"><span th:text="${hotel.category}"> </span> </h3>
+<p contenteditable="true" th:if="${hotel.img!=null}"><span th:text="${hotel.img}"> </span> </p>
+<img th:src="@{${hotel.img}}" width="500" height="auto">
 <!--<p>NAME: <span th:text="${hotel.name}"></span></p>-->
 <!--&lt;!&ndash;    <img th:src="@{/images/cat.jpg}" width="200" height="auto">&ndash;&gt;-->
 <!--<p th:if="${hotel.jpg != null}">  <span th:text="${hotel.jpg}"></span>-->
 <!--    <img th:src="@{${hotel.jpg}}" width="200" height="auto">-->
 <!--</p>-->
+<br>
 
+<!--<button> отменить изменения </button>-->
+<!--<button> сохранить изменения </button>-->
 
 <br>
 

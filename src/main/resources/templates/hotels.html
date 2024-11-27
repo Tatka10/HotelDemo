@@ -26,7 +26,7 @@
         <td><a th:href="@{/hotelinfo(name=${line.name})}"> <span th:text="${line.name}"/></a></td>
         <td><span th:text="${line.category}"/></td>
         <td>
-            <a th:href="@{'/hotelinfo?id='+ ${line.id}}"> Описание отеля </a>
+            <a th:href="@{'/hotelinfoid?id='+ ${line.id}}"> Описание отеля </a>
         <td>
             <a th:href="@{'/deletehotel?id=' + ${line.id}}">Удалить отель </a>
         </td>

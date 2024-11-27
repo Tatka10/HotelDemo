@@ -23,7 +23,7 @@
         <th> Описание отеля</th>
 
     <tr th:each="line : ${tab_hotels}">
-        <td><a th:href="@{/hotelinfo(name=${line.name})}"> <span th:text="${line.name}"/></a></td>
+        <td><a th:href="@{'/hotelinfoid?id='+ ${line.id}}"> <span th:text="${line.name}"/></a></td>
         <td><span th:text="${line.category}"/></td>
         <td>
             <a th:href="@{'/hotelinfoid?id='+ ${line.id}}"> Описание отеля </a>

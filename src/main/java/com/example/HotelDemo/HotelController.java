@@ -102,5 +102,6 @@ public class HotelController {
     @PostMapping("/changepage")
     public String saveChangesText(Model model) {
 //        model.addAttribute()
+
     return "-1";}
 }

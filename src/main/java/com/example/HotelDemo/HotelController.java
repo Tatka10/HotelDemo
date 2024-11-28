@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HotelController {
@@ -54,46 +55,52 @@ public class HotelController {
         model.addAttribute("tab_hotels", hotelService.getHotels());
         return "redirect:/";
     }
-@GetMapping("/hotelinfoid")
-public String hotelInfoId(String id, Model m) {
-    int i = Integer.parseInt(id);
-    Hotel hotel = hotelService.getHotelById(i);
-    if (hotel != null) {
-        m.addAttribute("hotel", hotel);
+
+    @GetMapping("/hotelinfoid")
+    public String hotelInfoId(String id, Model m) {
+        int i = Integer.parseInt(id);
+        Hotel hotel = hotelService.getHotelById(i);
+        if (hotel != null) {
+            m.addAttribute("hotel", hotel);
+        }
+        return "hotelinfoId";
     }
-    return "hotelinfoId";
-}
 
-@GetMapping("/category/{category}")
-public String getTypeProducts(@PathVariable String category,
-                              Model model) {
-    System.out.println("category = " + category);
-    model.addAttribute("tab_hotels", hotelService.getHotelsByCategory(category));
-    model.addAttribute("categories", hotelService.getCategories());
-    return "hotels";  // название HTML-шаблона
-}
-
-@GetMapping("/findhotel")
-public String findhotel(String name, Model model) {
-    hotelService.saveSearchHotels(name);
-    System.out.println("получено name = " + name);
-    Hotel h = hotelService.getHotelByName(name);
-    System.out.println(h);
-    if (h != null) {
-        model.addAttribute("nameFindHotel", h.name);
-        model.addAttribute("categoryFindHOtel", h.category);
-        return "hotels";
-    } else {
-        model.addAttribute("nameFindHotel", "Отеля нет в списке");
-
-        return "hotels";
+    @GetMapping("/category/{category}")
+    public String getTypeProducts(@PathVariable String category,
+                                  Model model) {
+        System.out.println("category = " + category);
+        model.addAttribute("tab_hotels", hotelService.getHotelsByCategory(category));
+        model.addAttribute("categories", hotelService.getCategories());
+        return "hotels";  // название HTML-шаблона
     }
-}
 
-@GetMapping("/adminka")
-public String adminka(Model model) {
+    @GetMapping("/findhotel")
+    public String findhotel(String name, Model model) {
+        hotelService.saveSearchHotels(name);
+        System.out.println("получено name = " + name);
+        Hotel h = hotelService.getHotelByName(name);
+        System.out.println(h);
+        if (h != null) {
+            model.addAttribute("nameFindHotel", h.name);
+            model.addAttribute("categoryFindHOtel", h.category);
+            return "hotels";
+        } else {
+            model.addAttribute("nameFindHotel", "Отеля нет в списке");
 
-    model.addAttribute("tab_lines", hotelService.listSearches);
-    return "adminka";
-}
+            return "hotels";
+        }
+    }
+
+    @GetMapping("/adminka")
+    public String adminka(Model model) {
+
+        model.addAttribute("tab_lines", hotelService.listSearches);
+        return "adminka";
+    }
+
+    @PostMapping("/changepage")
+    public String saveChangesText(Model model) {
+//        model.addAttribute()
+    return "-1";}
 }

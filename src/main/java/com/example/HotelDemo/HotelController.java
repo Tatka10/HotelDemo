@@ -92,7 +92,6 @@ public class HotelController {
             return "hotels";
         }
     }
-
     @GetMapping("/adminka")
     public String adminka(Model model) {
 

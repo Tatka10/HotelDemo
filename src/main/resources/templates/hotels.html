@@ -51,6 +51,9 @@
  <h2 th:if="${nameFindHotel!=null}"><span th:text="${nameFindHotel}"></span>  </h2>
 <p th:if="${categoryFindHOtel!=null}"><span th:text="${categoryFindHOtel}"> </span> </p>
 </form>
-
+<br>
+<form action="upload" method="post" enctype="multipart/form-data"></form>
+<input type="file" name="xfile">
+<input type="submit" value="Загрузить">
 </body>
 </html>

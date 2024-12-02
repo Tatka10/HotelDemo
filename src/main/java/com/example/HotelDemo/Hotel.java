@@ -31,6 +31,18 @@ public class Hotel {
     }
 
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public Hotel(String category, String name) {
 
         this.category = category;

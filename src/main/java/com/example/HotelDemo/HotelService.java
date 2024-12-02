@@ -70,4 +70,11 @@ public class HotelService {
         return listSearches;
     }
 
+    public Hotel changeInfoHotel(String name, String category, int id) {
+        Hotel h = getHotelById(id);
+        h.setName(name);
+        h.setCategory(category);
+        return h;
+    }
+
 }

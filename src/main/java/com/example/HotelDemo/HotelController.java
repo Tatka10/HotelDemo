@@ -7,6 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Path;
 
 @Controller
 public class HotelController {
@@ -99,9 +103,31 @@ public class HotelController {
         return "adminka";
     }
 
-    @PostMapping("/changepage")
-    public String saveChangesText(Model model) {
-//        model.addAttribute()
+    @PostMapping("/change")
+    public String changeInfoOfHotel(String name, String categoy, String id, Model model) {
+        Hotel h = hotelService.changeInfoHotel(name, categoy, Integer.parseInt(id));
+        model.addAttribute("hotel", h);
+        return "/change";
+    }
 
-    return "-1";}
+    @PostMapping("/upload")
+    public String doUpLOad(MultipartFile xfile, Model model) throws IOException {
+        if (xfile == null || xfile.isEmpty()) {
+            System.out.println("нет файла");
+            model.addAttribute("message", "нет файла");
+        } else {
+            System.out.println("файл загружен" + xfile.getOriginalFilename());
+            System.out.println("размер файла " + xfile.getSize());
+            model.addAttribute("message", "Файл загружен" + xfile.getOriginalFilename());
+            Path path = Path.of("filesForHotelDemo" + "/" + xfile.getOriginalFilename());
+            try {
+                xfile.transferTo(path);
+            } catch (IOException e) {
+                System.out.println("файл не сохранен " + xfile.getOriginalFilename());
+                model.addAttribute("messageError", "Ошибка сохранения файла " + xfile.getOriginalFilename());
+            }
+        }
+        return "hotels";
+    }
 }
+
